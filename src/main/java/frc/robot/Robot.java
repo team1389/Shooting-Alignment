@@ -1,7 +1,9 @@
 package frc.robot;
 
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.subsystems.Drivetrain;
 
@@ -19,6 +21,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
+        Shuffleboard.getTab("gyro tab").add((Sendable) drivetrain.ahrs);
     }
 
     /**
