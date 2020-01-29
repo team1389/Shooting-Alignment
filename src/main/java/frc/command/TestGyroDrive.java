@@ -11,11 +11,13 @@ public class TestGyroDrive extends CommandBase {
    public TestGyroDrive() {
        drivetrain = Robot.drivetrain;
        addRequirements(drivetrain);
+
+       drivetrain.ahrs.reset();
    }
     @Override
     public void execute() {
-        double error = -drivetrain.ahrs.getRate();
-        drivetrain.set(0.5 + drivetrain.kP * error, 0.5 - drivetrain.kP * error);
-
+        double error = -drivetrain.ahrs.getAngle();
+        drivetrain.set(drivetrain.kP * error, -drivetrain.kP * error);
+        System.out.println(error);
     }
 }

@@ -15,7 +15,7 @@ public class Drivetrain extends SubsystemBase {
 
     public AHRS ahrs = new AHRS(SerialPort.Port.kMXP);
 
-    public double kP = 1;
+    public double kP = 0.02;
 
     public Drivetrain() {
         leftFrontMotor = new TalonSRX(RobotMap.LEFT_FRONT);
@@ -30,11 +30,11 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void set(double leftPower, double rightPower) {
-        leftFrontMotor.set(ControlMode.PercentOutput, -leftPower);
-        leftBackMotor.set(ControlMode.PercentOutput, -leftPower);
+        leftFrontMotor.set(ControlMode.PercentOutput, leftPower);
+        leftBackMotor.set(ControlMode.PercentOutput, leftPower);
 
-        rightFrontMotor.set(ControlMode.PercentOutput, rightPower);
-        rightBackMotor.set(ControlMode.PercentOutput, rightPower);
+        rightFrontMotor.set(ControlMode.PercentOutput, -rightPower);
+        rightBackMotor.set(ControlMode.PercentOutput, -rightPower);
     }
 
     /*public void configPID(TalonSRX talon) {

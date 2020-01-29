@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.command.TestGyroDrive;
 import frc.subsystems.Drivetrain;
 
 /**
@@ -18,6 +19,7 @@ public class Robot extends TimedRobot {
      */
     public static Drivetrain drivetrain = new Drivetrain();
     public static OI oi = new OI();
+    public static TestGyroDrive testGyro = new TestGyroDrive();
 
     @Override
     public void robotInit() {
@@ -65,5 +67,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void testPeriodic() {
+        testGyro.execute();
     }
 }
