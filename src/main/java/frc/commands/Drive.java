@@ -17,7 +17,6 @@ public class Drive extends CommandBase {
         double throttle = Robot.oi.driveLeftY();
         double rotation = -(Robot.oi.driveRightX());
         boolean isQuickTurn = Robot.oi.driveLeftBumper();
-        System.out.println("Jebediah is having fun driving around!");
 
         Robot.drivetrain.drive(throttle, rotation, isQuickTurn);
 
