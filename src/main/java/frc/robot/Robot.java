@@ -59,6 +59,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         CommandScheduler.getInstance().run();
+        //drivetrain.set(0, 1);
     }
 
     /**

@@ -24,14 +24,21 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void set(double leftPower, double rightPower) {
-
+        rightFront.set(ControlMode.PercentOutput, rightPower);
     }
 
     public void drive(double throttle, double rot, boolean isQuickTurn) {
-        leftFront.set(ControlMode.PercentOutput,throttle - rot);
-        rightFront.set(ControlMode.PercentOutput,-throttle - rot);
-        leftBack.set(ControlMode.PercentOutput, throttle - rot);
-        rightBack.set(ControlMode.PercentOutput,-throttle -rot);
+        double leftPower = throttle - rot;
+        double rightPower = throttle + rot;
+        if (Math.abs(throttle)+Math.abs(rot) > 1) {
+            double max = Math.max(Math.abs(leftPower), Math.abs(rightPower));
+            leftPower = leftPower/max;
+            rightPower = rightPower/max;
+        }
+        leftFront.set(ControlMode.PercentOutput, leftPower);
+        rightFront.set(ControlMode.PercentOutput, rightPower);
+        leftBack.set(ControlMode.PercentOutput,  leftPower);
+        rightBack.set(ControlMode.PercentOutput, rightPower);
     }
 
 }
