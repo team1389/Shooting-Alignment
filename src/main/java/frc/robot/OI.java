@@ -21,9 +21,9 @@ public class OI {
         initControllers();
 
         aBtn = new JoystickButton(driveController, XboxController.Button.kA.value);
-        aBtn.whenPressed(new InstantCommand(() -> Robot.ml.turn()));
+        //Robot.ml.setDefaultCommand(new ML());
 
-        //Robot.drivetrain.setDefaultCommand(drive);
+        Robot.drivetrain.setDefaultCommand(drive);
     }
     /**
      * Initialize JoystickButtons and Controllers

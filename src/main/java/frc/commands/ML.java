@@ -1,6 +1,7 @@
 package frc.commands;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.subsystems.Drivetrain;
@@ -24,9 +25,11 @@ public class ML extends CommandBase {
 
     @Override
     public void execute() {
-        double error = Robot.ml.movement();
+        double error = 0;//Robot.ml.movement();
         double power = pid.calculate(error, 0);
 
         Robot.drivetrain.set(power, -power);
+        SmartDashboard.putNumber("error", error);
+        SmartDashboard.putNumber("power", power);
     }
 }
