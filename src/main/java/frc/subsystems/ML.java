@@ -33,7 +33,7 @@ public class ML extends SubsystemBase {
         // get array of coords
         // its format is [x1,y1,x2,y2], and repeat this for as many times as possible 
         // length therefore is always a multiple of 4.
-        double[] inputCoords = {};//getDoubleArray();
+        double[] inputCoords = getDoubleArray();
 
         // because length is a multiple of 4, and divsions round down, this will end up being 1/4 the length of 
         // the `inputCoords` array
@@ -77,6 +77,10 @@ public class ML extends SubsystemBase {
         // remove starting bracket and ending bracket
         // then split on ", " creating a list of numbers in the form of a string:
         // ["1", "2", "3", "4"]
+        if (boxesString.length() == 2) {
+            double[] arr = {};
+            return arr;
+        }
         String[] numsString = boxesString.substring(1,boxesString.length()-2).split(", ");
 
         // make a double array to hold the new doubles 

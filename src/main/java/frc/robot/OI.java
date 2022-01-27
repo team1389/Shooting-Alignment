@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.commands.Drive;
-import frc.commands.ML;
+import frc.commands.MLTurnToBall;
 //import frc.commands.MLTurnToBall;
 
 
@@ -21,8 +21,7 @@ public class OI {
         initControllers();
 
         aBtn = new JoystickButton(driveController, XboxController.Button.kA.value);
-        //Robot.ml.setDefaultCommand(new ML());
-
+        Robot.ml.setDefaultCommand(new MLTurnToBall());
         Robot.drivetrain.setDefaultCommand(drive);
     }
     /**

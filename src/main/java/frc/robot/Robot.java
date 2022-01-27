@@ -18,8 +18,11 @@ public class Robot extends TimedRobot {
      * Ex: public static System system = new System();
      */
     public static Drivetrain drivetrain = new Drivetrain();
-    public static OI oi = new OI();
     public static ML ml = new ML();
+
+
+    //INSTANSIATE LAST
+    public static OI oi = new OI();
 
     @Override
     public void robotInit() {
@@ -66,5 +69,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void testPeriodic() {
+
     }
 }
