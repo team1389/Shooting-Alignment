@@ -9,7 +9,7 @@ import frc.subsystems.Drivetrain;
 public class MLTurnToBall extends CommandBase {
     double kP = 0.5;
 
-    double kI = 0.05;
+    double kI = 0.00;
     double kD = 0;
     PIDController pid;
 
@@ -31,22 +31,22 @@ public class MLTurnToBall extends CommandBase {
 
     @Override
     public void execute() {
-        kP = SmartDashboard.getNumber("kP", kP);
+        // kP = SmartDashboard.getNumber("kP", kP);
 
-        pid.setP(kP);
+        // pid.setP(kP);
 
-        kI = SmartDashboard.getNumber("kI", kI);
+        // kI = SmartDashboard.getNumber("kI", kI);
 
-        pid.setI(kI);
+        // pid.setI(kI);
 
-        kD = SmartDashboard.getNumber("kD", kD);
+        // kD = SmartDashboard.getNumber("kD", kD);
 
-        pid.setD(kD);
+        // pid.setD(kD);
 
         double error = Robot.ml.movement();
         double power = pid.calculate(error, 0);
 
-        Robot.drivetrain.set(power, -power);
+        Robot.drivetrain.set(-power, power);
         SmartDashboard.putNumber("error", error);
         SmartDashboard.putNumber("power", power);
     }

@@ -1,5 +1,7 @@
 package frc.subsystems;
 
+import java.util.Arrays;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -26,8 +28,8 @@ public class ML extends SubsystemBase {
 //        res = camera.getEntry("mode");
 //        string = res.getString("320x240 MJPEG 30 fps");
         // TODO: get these from network tables again
-        middleX = 160/2;
-        middleY = 120/2;
+        middleX = 120/2;
+        middleY = 160/2;
     }
     public double movement() {
         // get array of coords
@@ -62,11 +64,11 @@ public class ML extends SubsystemBase {
         }
 
         // center of bounding box
-        double center = (largest.x1 +largest.x2)/2;
+        double center = (largest.y1 +largest.y2)/2;
 
-        // center - middle x will make a value -middlex.. middlex
-        // dividing by middle x will then make that -1..1
-        return ((center) - middleX) / middleX;
+        // center - middle y will make a value -middley.. middley
+        // dividing by middle y will then make that -1..1
+        return ((center) - middleY) / middleY;
     }
 
     public double[] getDoubleArray() {
@@ -81,7 +83,7 @@ public class ML extends SubsystemBase {
             double[] arr = {};
             return arr;
         }
-        String[] numsString = boxesString.substring(1,boxesString.length()-2).split(", ");
+        String[] numsString = boxesString.substring(1,boxesString.length()-1).split(", ");
 
         // make a double array to hold the new doubles 
         double[] nums = new double[numsString.length];
@@ -93,6 +95,7 @@ public class ML extends SubsystemBase {
         }
 
         // the array now has the doubles filled and now can be returned. huzzah!
+        System.out.println(Arrays.toString(nums));
         return nums;
 
     }
